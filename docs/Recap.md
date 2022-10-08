@@ -6,7 +6,7 @@
 
 3.  `yarn run dev`
 
-## Mise en place de cocur pour les slug
+## Mise en place de cocur pour les slugs
 
 1. `composer require cocur/slugify`
 
@@ -19,3 +19,9 @@
    `public function prePersist(){ `
 
    `this->slug = (new Slugify())->slugify($this->title); } `
+
+## Implementation de UniqueEnty
+
+1. Ajouter l'attribut ==> `#[UniqueEntity()]`
+2. choisir ==> les parametres ex ==>`#[UniqueEntity('slug', message: 'Ce slug existe déjà.')]`
+3. ne pas oublier d l'implementer => `use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;`
