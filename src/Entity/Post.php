@@ -2,10 +2,11 @@
 
 namespace App\Entity;
 
-use App\Repository\PostRepository;
 use DateTimeImmutable;
+use Cocur\Slugify\Slugify;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\PostRepository;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity; 
 
@@ -47,6 +48,12 @@ class Post
     {
         $this->updatedAt = new \DateTimeImmutable(); 
         $this->createdAt = new DateTimeImmutable(); 
+    }
+
+
+    
+    public function prePersist(){
+        $this->slug = (new Slugify())->slugify($this->title);
     }
 
     public function getId(): ?int
