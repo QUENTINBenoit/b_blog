@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use DateTimeImmutable;
 use Cocur\Slugify\Slugify;
+use App\Entity\Thumbnail;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\PostRepository;
@@ -37,11 +38,19 @@ class Post
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $state = Post::STATES[0];
 
+
+    #[ORM\OneToOne(inversedBy: 'post', targetEntity: Thumbnail::class, cascade: ['persist', 'remove'])]
+    private Thumbnail $thumbnail; 
+    
+    
+    
     #[ORM\Column(nullable: true)]
     private ?\DateTimeImmutable $updatedAt = null;
 
     #[ORM\Column]
     private ?\DateTimeImmutable $createdAt = null;
+      
+
 
 
     public function __construct()
@@ -51,7 +60,7 @@ class Post
     }
 
 
-    
+
     public function prePersist(){
         $this->slug = (new Slugify())->slugify($this->title);
     }
@@ -96,6 +105,19 @@ class Post
 
         return $this;
     }
+
+    public function getThumbnail(): ?Thumbnail
+    {
+        return $this->thumbnail;
+    }
+
+    public function setThumbnail(?Thumbnail $thumbail): self
+    {
+        $this->thumbnail = $thumbail;
+
+        return $this;
+    }
+
 
     public function getUpdatedAt(): ?\DateTimeImmutable
     {
