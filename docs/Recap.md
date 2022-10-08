@@ -4,4 +4,8 @@
 
 2.  `yarn install`
 
-3.  `yarn run -dev`
+3.  `yarn run dev`
+
+## Mise en place de cocur pour les slug
+
+1. `composer require cocur/slugify`
