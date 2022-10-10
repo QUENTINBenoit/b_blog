@@ -33,7 +33,7 @@ class Post
 
     #[ORM\Column(length: 255)]
     #[Assert\NotBlank()]
-    private ?string $slug = null;
+    private ?string $slug = '';
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $state = Post::STATES[0];
@@ -60,8 +60,9 @@ class Post
     }
 
 
-
-    public function prePersist(){
+    #[ORM\PrePersist]
+    public function prePersist()
+    {
         $this->slug = (new Slugify())->slugify($this->title);
     }
 

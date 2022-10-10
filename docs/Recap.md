@@ -20,6 +20,10 @@
 
    `this->slug = (new Slugify())->slugify($this->title); }`
 
+4. Ne pas oublier de tagger la fonction avec l'attribut suivant
+
+   ` #[ORM\PrePersist]`
+
 ## Implementation de UniqueEnty
 
 1. Ajouter l'attribut ==> `#[UniqueEntity()]`
@@ -50,7 +54,7 @@
    - `metadata:`
    - --`type: attribute`
 
-5. ajouter le mappin
+5. ajouter le mapping
 
 `mappings:`
 --`post_thumbnail:`
@@ -58,3 +62,22 @@
 ---`upload_destination: "%kernel.project_dir%/public/`
 ---`images/posts"`
 ---`namer: Vich\UploaderBundle\Naming\SmartUniqueNamer`
+
+## Mise en place de fixtures
+
+1. Installation du bundle Symfony
+   `composer require --dev orm-fixtures`
+
+2. installation de facker
+   `composer require --dev fakerphp/faker`
+
+3. Mise en place des fixture dans le dossier src/DatatFixtures
+
+   1. coder les fixtures selon vorte projet
+   2. lacer les fixtures avec la commande:
+
+      ` php bin/console doctrine:fixture:load`
+
+      ou
+
+      `php bin/console d:f:l`
