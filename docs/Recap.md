@@ -6,6 +6,34 @@
 
 3.  `yarn run dev`
 
+4.  decommenter la ligne 56 ou 60 dans le fichier 'webpack.config.js'
+
+    ` .enableSassLoader()`
+
+5.  Installation du sass loader
+
+    `yarn add sass-loader@^13.0.0 sass --dev`
+
+6.  faire un `npm run build` pour voir si tout fonctionne correctement
+
+7.  dans le dossier assets\styles => renomer fichier `app.css` en fichier `app.scss` et de le fichier app.js renomer l'import en `"./styles/app.scss";`
+
+## Installation de tailwincss
+
+1.  `npm install -D tailwindcss postcss autoprefixer`
+
+2.  creation d'un fichier `postcss.cofig.js` à la racine du projet
+    et y ajouter le code suivant
+    ` module.exports = {`
+    ` plugins: {`
+    `tailwindcss: {},`
+    ` autoprefixer: {},`
+    `}`
+    sinon voir la doc de tailwin css
+
+3.  activation de postCss dans le fichier webpack.config.js
+    ` `
+
 ## Mise en place de cocur pour les slugs
 
 1. `composer require cocur/slugify`

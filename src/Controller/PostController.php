@@ -13,19 +13,21 @@ class PostController extends AbstractController
     public function listAllPost(PostRepository $postRepository): Response
     {
             $postList = $postRepository->findAll(); 
- 
-        return $this->render('post/index.html.twig', [
-            'postList' => $postList,
-        ]);
-    }
-
-    #[Route('/postpub', name: 'pub_post', methods: ['GET'] )]
-    public function publishedPost(PostRepository $postRepository): Response
-    {
             $postPublished = $postRepository->findPosPublished(); 
  
         return $this->render('post/index.html.twig', [
+            'postList' => $postList,
             'postPublished' =>  $postPublished,
         ]);
     }
+
+    // #[Route('/postpub', name: 'pub_post', methods: ['GET'] )]
+    // public function publishedPost(PostRepository $postRepository): Response
+    // {
+    //         $postPublished = $postRepository->findPosPublished(); 
+ 
+    //     return $this->render('post/index.html.twig', [
+    //         'postPublished' =>  $postPublished,
+    //     ]);
+    // }
 }
