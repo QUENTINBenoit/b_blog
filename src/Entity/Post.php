@@ -13,6 +13,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 
 #[ORM\Entity(repositoryClass: PostRepository::class)]
+#[ORM\HasLifecycleCallbacks]
 #[UniqueEntity('slug', message: 'Ce slug existe déjà.')]
 class Post
 {
@@ -56,9 +57,14 @@ class Post
     public function __construct()
     {
         $this->updatedAt = new \DateTimeImmutable(); 
-        $this->createdAt = new DateTimeImmutable(); 
+        $this->createdAt = new \DateTimeImmutable(); 
     }
 
+   #[ORM\PreUpdate]
+   public function PreUpdate()
+   {
+     $this->updatedAt = new DateTimeImmutable(); 
+   }
 
     #[ORM\PrePersist]
     public function prePersist()
