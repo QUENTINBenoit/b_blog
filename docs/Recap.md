@@ -6,7 +6,7 @@
 
 3.  `yarn run dev`
 
-4.  decommenter la ligne 56 ou 60 dans le fichier 'webpack.config.js'
+4.  documenter la ligne 56 ou 60 dans le fichier 'webpack.config.js'
 
     ` .enableSassLoader()`
 
@@ -16,23 +16,26 @@
 
 6.  faire un `npm run build` pour voir si tout fonctionne correctement
 
-7.  dans le dossier assets\styles => renomer fichier `app.css` en fichier `app.scss` et de le fichier app.js renomer l'import en `"./styles/app.scss";`
+7.  dans le dossier assets\styles => renommer fichier `app.css` en fichier `app.scss` et dans le fichier app.js renommer l'import en `"./styles/app.scss";`
 
 ## Installation de tailwincss
 
 1.  `npm install -D tailwindcss postcss autoprefixer`
 
-2.  creation d'un fichier `postcss.cofig.js` à la racine du projet
-    et y ajouter le code suivant
-    ` module.exports = {`
-    ` plugins: {`
-    `tailwindcss: {},`
-    ` autoprefixer: {},`
-    `}`
-    sinon voir la doc de tailwin css
+et suivre la doc tailwincss
 
-3.  activation de postCss dans le fichier webpack.config.js
-    ` `
+### Installation de tailwin Élément
+
+1.  `npm install tw-elements`
+2.  ajouter dans tailwind.config.js :
+
+`"./node_modules/tw-elements/dist/js/**/*.js"`
+
+3. rajouter le plugin suivant dans le plugins:
+
+   ` require('tw-elements/dist/plugin')`
+
+4. pour finir ajouter un l'import ==> `import 'tw-elements';` dans le fichier /assets/app.js
 
 ## Mise en place de cocur pour les slugs
 
@@ -42,7 +45,7 @@
 
    `use Cocur\Slugify\Slugify;`
 
-3. Creation d'un prepersit pour slugger le title avant la persitance
+3. Création d'un prepersit pour slugger le title avant la persistance
 
    `public function prePersist(){`
 
@@ -55,29 +58,29 @@
 ## Implementation de UniqueEnty
 
 1. Ajouter l'attribut ==> `#[UniqueEntity()]`
-2. choisir ==> les parametres ex ==>`#[UniqueEntity('slug', message: 'Ce slug existe déjà.')]`
-3. ne pas oublier d l'implementer => `use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;`
+2. choisir ==> les paramètres ex ==>`#[UniqueEntity('slug', message: 'Ce slug existe déjà.')]`
+3. ne pas oublier d l'implémenter => `use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;`
 
-## Gestion de images
+## Gestion des images
 
 1. Installation du bundle vich/uploader-bundle:
 
    `composer require vich/uploader-bundle`
 
-2. Attention vérifier si bundle vicheUploader est ajouté a tous les bundle congig
+2. Attention vérifier si bundle vicheUploader est ajouté a tous les bundles congig
 
-   1. aller dans congif bundles.php et ajouter - `Vich\UploaderBundle\VichUploaderBundle::class => ['all' => true],`
+   1. aller dans la config bundles.php et ajouter - `Vich\UploaderBundle\VichUploaderBundle::class => ['all' => true],`
 
 3. Ajoutez la configuration minimale qui permet au paquet de fonctionner :
 
-   - creation d'un fichier .yaml dans le dossier packages " vich_uploader.yaml"
+   - création d'un fichier .yaml dans le dossier packages " vich_uploader.yaml"
    - ajouter le code suivant
 
      ` vich_uploader:`
 
      --- `db_driver: orm`
 
-4. ajouter metada pour que les attributs fonctionne
+4. ajouter metada pour que les attributs fonctionnent
 
    - `metadata:`
    - --`type: attribute`
@@ -99,9 +102,9 @@
 2. installation de facker
    `composer require --dev fakerphp/faker`
 
-3. Mise en place des fixture dans le dossier src/DatatFixtures
+3. Mise en place des fixtures dans le dossier src/DatatFixtures
 
-   1. coder les fixtures selon vorte projet
+   1. coder les fixtures selon votre projet
    2. lacer les fixtures avec la commande:
 
       ` php bin/console doctrine:fixture:load`

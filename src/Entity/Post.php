@@ -60,6 +60,11 @@ class Post
         $this->createdAt = new \DateTimeImmutable(); 
     }
 
+    public function __toString()
+    {
+        return $this->title;
+    }
+
    #[ORM\PreUpdate]
    public function PreUpdate()
    {

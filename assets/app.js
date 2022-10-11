@@ -9,3 +9,5 @@
 import "./styles/app.css";
 
 console.log("Webpack encore est en train de travailler !!");
+
+import "tw-elements";

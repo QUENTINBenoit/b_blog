@@ -3,7 +3,25 @@
 {% block title %}Post{% endblock %}
 
 {% block body %}
- <h1> Coucou Post </h1> 
+ <h1 class=" text-center text-blue-700"> B'blog </h1>
+
+ 
+      <div class="flex flex-wrap  gap-4  justify-around m-6 bg-slate-900 p-4">
+      {% for post in   postPublished  %}
+      <div class="w-96 h-auto   bg-white  border-green-400 border-b-2 rounded-3xl p-3">
+     
+         <h3 class = " text-center font-bold  bg-slate-900 text-xl text-white"> {{ post.title}}</h3>
+
+         <p class =" text-xs text-lef "> benoit s'n va </p> 
+         <span class=" text-center mx-6" > publier le {{post.createdAt | date('d/m/Y')}}</span>     
+       </div>
+
+
+
+   {% endfor %}
+      </div>
+  
+
    <pre>
     {{ dump(postPublished) }}
    </pre>
