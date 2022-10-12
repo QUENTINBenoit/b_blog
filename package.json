@@ -24,7 +24,8 @@
     "dev": "encore dev",
     "watch": "encore dev --watch",
     "build": "encore production --progress",
-    "lancer": "npm run watch"
+    "lancer": "npm run watch",
+    "build-tailwind": "tailwindcss build -i assets/styles/app.css -o public/build/app.css --watch"
   },
   "dependencies": {
     "tw-elements": "^1.0.0-alpha12"

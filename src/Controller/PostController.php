@@ -14,6 +14,7 @@ class PostController extends AbstractController
     {
             $postList = $postRepository->findAll(); 
             $postPublished = $postRepository->findPosPublished(); 
+            \dump($postPublished);
  
         return $this->render('post/index.html.twig', [
             'postList' => $postList,
