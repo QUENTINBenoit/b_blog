@@ -3,8 +3,8 @@
 {% block title %}Post{% endblock %}
 
 {% block body %}
- 
-   <div class="container  p-4">
+
+     <div class="container  p-4  bg-red-300">
     
       <h1 class="text-center text-5xl text-black "> B'blog : le blog créé de A a Z avec Symfony </h1>
          <div class="flex flex-row flex-wrap justify-evenly  mt-6 ">
@@ -12,9 +12,14 @@
              {% include "components/_card.html.twig" %}
             {% endfor %}
          </div>
+
+        
    </div>
 
-    <div class ="" >
-      {{ knp_pagination_render( postPublished, 'components/_pagination.html.twig')}}
-      </div>
+  <div class ="flex justify-center container" >
+      {{ knp_pagination_render (postPublished)}}
+      </div>  
+  
+ 
+ 
 {% endblock %}

@@ -1,3 +1,45 @@
 
-  {% extends "@KnpPaginator/Pagination/tailwindcss_pagination.html.twig" %}
+  {# {% extends "@KnpPaginator/Pagination/tailwindcss_pagination.html.twig" %} #}
   
+{# tailwindcss pagination control impleentation   #}
+
+
+{% if pageCount > 1 %}
+  <div class="flex items-center bg-green-100">
+    {% if first is defined and current != first %}
+            <a        
+                class="relative block py-1.5 px-3  bg-transparent outline-none rounded-full text-gray-500 "
+                href="{{ path(route, (query|merge({(pageParameterName): current -1 })))  }}" 
+                tabindex="-1" 
+                aria-disabled="true"> &lsaquo;
+            </a>
+    {% endif %}
+    {% for page in pagesInRange %}
+      {% if page != current %}
+          <a       
+          class="page-link relative block py-1.5 px-3 border-0 bg-transparent outline-none transition-all duration-300 rounded-full text-gray-800 hover:text-gray-800 hover:bg-gray-200 focus:shadow-none"
+          href="{{ path(route, query|merge({(pageParameterName): page})) }}"
+          >
+            {{ page }}  
+          </a>             
+      {% else %}
+          <a   
+          href="{{ path(route, query|merge({(pageParameterName): page})) }}"                
+          class=" relative block py-1.5 px-3 border-0 bg-blue-600 outline-none transition-all duration-300 rounded-full text-white hover:text-white hover:bg-blue-600 shadow-md focus:shadow-md"
+          >
+            {{ page }}
+          </a>	
+      {% endif %}    
+    {% endfor %}
+    {% if last is defined and current != last %}
+      <a   
+      class="relative block py-1.5 px-3  bg-transparent outline-none rounded-full text-gray-500 "
+      href="{{ path(route, (query|merge({(pageParameterName): current +1 })))  }}" 
+      tabindex="-1" 
+      aria-disabled="true"
+      >
+        &rsaquo;
+      </a>
+    {% endif %}
+  </div>
+{% endif %}
