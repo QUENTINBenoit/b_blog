@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Post;
 use App\Repository\PostRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -32,5 +33,17 @@ class PostController extends AbstractController
             'postPublished' =>  $postPublished,
         ]);
     }
+
+
+    #[Route('/post/{slug}', name: 'post_show', methods:['GET'])]
+     public function showPost(Post $post): Response
+     {
+           \dump($post);
+        return $this->render('post/show.html.twig', [
+            'post' => $post, 
+        ]); 
+
+     }
+
 
 }
