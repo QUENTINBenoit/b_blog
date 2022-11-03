@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}B_blog- Error {{ exception.statusCode}} {% endblock %}</title>
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+    </head>
+    <body>
+ 
+        {% block body %}  
+        <div
+  class="
+    flex
+    items-center
+    justify-center
+    w-screen
+    h-screen
+    bg-gradient-to-r
+    from-indigo-600
+    to-blue-400
+    bg-red-400
+  "
+>
+  <div class="px-40 py-20 bg-white rounded-md shadow-xl">
+    <div class="flex flex-col items-center">
+      <h1 class="font-bold text-blue-600 text-9xl">HTTP Error {{ exception.statusCode}}</h1>
+
+      <h6 class="mb-2 text-2xl font-bold text-center text-gray-800 md:text-3xl">
+        <span class="text-red-500">Oops!</span> {{exception.statusText}}
+      </h6>
+
+      <p class="mb-8 text-center text-gray-500 md:text-lg">
+        The page you’re looking for doesn’t exist.
+      </p>
+
+      <a
+        href="#"
+        class="px-6 py-2 text-sm font-semibold text-blue-800 bg-blue-100"
+        >Go home</a
+      >
+
+    </div>
+  </div>
+</div>
+
+        
+         {% endblock %}
+
+    </body>
+</html>

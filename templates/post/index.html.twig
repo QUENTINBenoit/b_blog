@@ -4,10 +4,10 @@
 
 {% block body %}
 
-     <div class="container  p-4  bg-red-300">
+     <div class="container  p-4 h-screen">
     
       <h1 class="text-center text-5xl text-black "> B'blog : le blog créé de A a Z avec Symfony </h1>
-         <div class="flex flex-row flex-wrap justify-evenly  mt-6 ">
+         <div class="flex flex-row flex-wrap justify-evenly  mt-16 ">
             {% for post in postPublished %}
              {% include "components/_card.html.twig" %}
             {% endfor %}

@@ -23,7 +23,7 @@ class PostController extends AbstractController
             $postPublished = $paginatorInterface->paginate(
                 $datas,
                 $request->query->getInt('page',  1),
-                5           
+                5         
             );           
             \dump($postPublished);
  
